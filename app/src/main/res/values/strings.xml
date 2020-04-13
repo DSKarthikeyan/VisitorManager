@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Visitor Manager</string>
+    <string name="text_visitor_name">Visitor Name</string>
+    <string name="text_company_name">Company Name</string>
+    <string name="text_phone_number">Phone Number</string>
+    <string name="text_visitor_date">Visit Date</string>
+    <string name="text_employee_name">Employee Name</string>
+    <string name="text_email_id">Email Id</string>
+    <string name="text_visit_purpose">Purpose of Visit</string>
+    <string name="text_have_device">Have any Devices?</string>
+    <string name="text_device_details">Device details</string>
+    <string name="text_yes">Yes</string>
+    <string name="text_no">No</string>
+    <string name="text_submit">Submit</string>
+    <string name="text_next">Next</string>
+    <string name="text_visitor_photo">Visitor Photo</string>
+    <string name="text_take_upload_photo">Take Photo/Upload Photo</string>
+    <string name="text_visitor_sign">Visitor Signature</string>
+    <string name="text_put_sign">Put your Signature</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_export_db">Export Data</string>
+    <string name="action_export_format_data">Sample Employee Data</string>
+    <string name="action_export_db_text">Export your visitor details in Excel format</string>
+    <string name="action_import_db">Import Data</string>
+    <string name="action_import_db_text">Import your Employee details in Excel format</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="home_second">Home Second</string>
+</resources>

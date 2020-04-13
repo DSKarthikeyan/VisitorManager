@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/visitorDetailsFirstScreen"
+    tools:context=".GetVisitorDetails">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/editTextName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_60dp"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginRight="@dimen/margin_20dp"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:hint="Name"
+            android:singleLine="true"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/textHintColor"
+            android:textSize="@dimen/font_14sp" />
+
+        <EditText
+            android:id="@+id/editTextCompanyName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_60dp"
+            android:layout_below="@+id/editTextName"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginRight="@dimen/margin_20dp"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:hint="Company Name"
+            android:singleLine="true"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/textHintColor"
+            android:textSize="@dimen/font_14sp" />
+
+        <EditText
+            android:id="@+id/editTextEmployeeName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_60dp"
+            android:layout_below="@id/editTextCompanyName"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginRight="@dimen/margin_20dp"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:hint="Employee Name"
+            android:singleLine="true"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/textHintColor"
+            android:textSize="@dimen/font_14sp" />
+
+        <EditText
+            android:id="@+id/editTextPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_60dp"
+            android:layout_below="@+id/editTextEmployeeName"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginRight="@dimen/margin_20dp"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:hint="Ph Number"
+            android:inputType="phone"
+            android:singleLine="true"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/textHintColor"
+            android:textSize="@dimen/font_14sp" />
+
+        <EditText
+            android:id="@+id/editTextEmailId"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_60dp"
+            android:layout_below="@+id/editTextPhoneNumber"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginRight="@dimen/margin_20dp"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:hint="Email Id"
+            android:inputType="textEmailAddress"
+            android:singleLine="true"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/textHintColor"
+            android:textSize="@dimen/font_14sp" />
+
+        <EditText
+            android:id="@+id/editTextPurposeofVisit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_60dp"
+            android:layout_below="@+id/editTextEmailId"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginRight="@dimen/margin_20dp"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:hint="Purpose of Visit"
+            android:singleLine="true"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/textHintColor"
+            android:textSize="@dimen/font_14sp" />
+
+        <TextView
+            android:id="@+id/textViewRadioHaveAnyHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Have Any Devices?"
+            android:layout_below="@+id/editTextPurposeofVisit"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginRight="@dimen/margin_20dp"
+            android:textSize="@dimen/font_14sp"/>
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewRadioHaveAnyHeader"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginRight="@dimen/margin_20dp"
+            android:padding="15dp">
+
+            <RadioButton
+                android:id="@+id/red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:onClick="radio_button_click"/>
+
+            <RadioButton
+                android:id="@+id/green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:onClick="radio_button_click"/>
+
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/editTextHaveAnyDevices"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_60dp"
+            android:layout_below="@+id/radio_group"
+            android:layout_marginLeft="@dimen/margin_20dp"
+            android:layout_marginRight="@dimen/margin_20dp"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:hint="Enter Device Name"
+            android:singleLine="true"
+            android:visibility="invisible"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/textHintColor"
+            android:textSize="@dimen/font_14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_50dp"
+            android:id="@+id/nextButton"
+            android:layout_below="@+id/editTextHaveAnyDevices"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:background="@color/buttonYellowColor"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:text="Next" />
+    </RelativeLayout>
+</ScrollView>
