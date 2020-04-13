@@ -1,1 +1,1 @@
-# VisitorManger
+# VisitorManager
