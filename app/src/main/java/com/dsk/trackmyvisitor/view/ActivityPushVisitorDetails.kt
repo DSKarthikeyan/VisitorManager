@@ -27,7 +27,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.dsk.trackmyvisitor.data.DAO.DAO
-import com.dsk.trackmyvisitor.data.database.AppDatabase
+import com.dsk.trackmyvisitor.data.database.AppDataBase
 import com.dsk.trackmyvisitor.data.entity.VisitorDetails
 import com.dsk.trackmyvisitor.model.utility.SingleTouchView
 import com.dsk.trackmyvisitor.model.utility.SingletonVisitorDetails
@@ -52,7 +52,7 @@ class ActivityPushVisitorDetails : AppCompatActivity() {
     private var visitorPhotoData: String? = "";
     private var singleTouchView: SingleTouchView? = null
     private var visitorSign: Bitmap? = null
-    private var appDatabase: AppDatabase? = null
+    private var appDatabase: AppDataBase? = null
     private var visitorDetailsDAO: DAO? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -121,10 +121,10 @@ class ActivityPushVisitorDetails : AppCompatActivity() {
 
     private fun storeDatatoLocalDb() {
         if (appDatabase == null) {
-            appDatabase = AppDatabase.getAppDataBase(this)
+            appDatabase = AppDataBase.getDatabase(this)
         }
         if (appDatabase != null && visitorDetailsDAO == null) {
-            visitorDetailsDAO = appDatabase?.visitorDetailsDao()
+            visitorDetailsDAO = appDatabase!!.visitorDetailsDAO()
         }
         var visitorDetails: VisitorDetails? = null
         visitorDetails = getVisitorDetails()

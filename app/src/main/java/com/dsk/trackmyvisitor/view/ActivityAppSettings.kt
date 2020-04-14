@@ -20,8 +20,9 @@ import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.dsk.trackmyvisitor.data.DAO.DAO
-import com.dsk.trackmyvisitor.data.database.AppDatabase
+import com.dsk.trackmyvisitor.data.database.AppDataBase
 import com.dsk.trackmyvisitor.data.entity.EmployeeDetails
+import com.dsk.trackmyvisitor.data.entity.VisitorDetails
 import com.dsk.trackmyvisitor.model.utility.CSVWriterReader
 import com.dsk.visitormanager.R
 import kotlinx.coroutines.Dispatchers
@@ -34,7 +35,7 @@ class ActivityAppSettings : AppCompatActivity() {
     private val PERMISSION_CODE = 1000;
     private val REQUEST_GALLERY_FILE = 12345
 
-    private var appDatabase: AppDatabase? = null
+    private var appDatabase: AppDataBase? = null
     private var visitorDetailsDAO: DAO? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -102,7 +103,29 @@ class ActivityAppSettings : AppCompatActivity() {
 
     private fun exportDatabaseFile() {
         val csvHeader = "id,name,emailId,companyName"
-//        CSVWriterReader().writeCsv(this, csvHeader, visitorDetails, "visitor-details", ".csv")
+        val visitorDetails = ArrayList<VisitorDetails>()
+        visitorDetails.add(
+            VisitorDetails(
+                1, "DSK", "Karthik", "8526603722",
+                "dsk@mail.com", "Inferno", "Interview", "Oneplus", null,
+                null
+            )
+        )
+        visitorDetails.add(
+            VisitorDetails(
+                2, "Karthik", "DSK", "7904018967",
+                "dsk@mail.com", "Inferno", "Interview", "Oneplus", null,
+                null
+            )
+        )
+        visitorDetails.add(
+            VisitorDetails(
+                3, "D S Karthikeyan", "Karthik", "8526603722",
+                "dsk@mail.com", "Inferno", "Meeting", "Oneplus", null,
+                null
+            )
+        )
+        CSVWriterReader().writeCsv(this, csvHeader, visitorDetails, "visitor-details", ".csv")
     }
 
     private fun importDatabaseFile() {
@@ -138,15 +161,24 @@ class ActivityAppSettings : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        Log.d("DSK", " in11 $resultCode");
         if (resultCode == Activity.RESULT_OK) {
-            Log.d("DSK", "in11")
             when (requestCode) {
                 REQUEST_GALLERY_FILE -> {
                     val clipData = data!!.data
                     if (clipData != null) {
-                        var records = CSVWriterReader().csvReader(clipData, this)
-                        insertCSVDatatoDb(records);
+                        Log.d("DSK ", "in $clipData");
+                        var arrayListEmployeeDetails = ArrayList<EmployeeDetails>()
+                        arrayListEmployeeDetails =  CSVWriterReader().csvReader(clipData, this)
+                        if (arrayListEmployeeDetails != null) {
+                            Log.d("DSK ", "in ${arrayListEmployeeDetails.size}");
+                            insertCSVDatatoDb(arrayListEmployeeDetails)
+                        } else {
+                            Toast.makeText(
+                                this,
+                                "Data not found in csv, please upload valid .csv file",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
                     } else {
                         val msg = "Null filename data received!"
                         val toast = Toast.makeText(applicationContext, msg, Toast.LENGTH_LONG)
@@ -157,34 +189,49 @@ class ActivityAppSettings : AppCompatActivity() {
         }
     }
 
-    private fun insertCSVDatatoDb(visitorData: MutableList<Array<String>>?) {
-        if (visitorData != null) {
-            if (appDatabase == null) {
-                appDatabase = AppDatabase.getAppDataBase(this)
-            }
-            if (appDatabase != null && visitorDetailsDAO == null) {
-                visitorDetailsDAO = appDatabase?.visitorDetailsDao()
-            }
-            var visitorDetails = formEmployeeDatatoDB(visitorData)
-            GlobalScope.launch(Dispatchers.IO)  {
-                visitorDetailsDAO!!.insertVisitor(visitorDetails)
-            }
-        }
+    private fun insertCSVDatatoDb(visitorData: ArrayList<EmployeeDetails>) {
+//        if (appDatabase == null) {
+            appDatabase = AppDataBase.getDatabase(this)
+//        }
+//        if (appDatabase != null) {
+            visitorDetailsDAO = appDatabase!!.visitorDetailsDAO()
+//        }
+
+        Log.d("DSK", " visitorDetails " + visitorData!!.size)
+//        GlobalScope.launch(Dispatchers.IO) {
+//            visitorDetailsDAO!!.insertVisitorList(visitorData!!)
+//        }
     }
 
-    private fun formEmployeeDatatoDB(employeeData: MutableList<Array<String>>?): ArrayList<EmployeeDetails> {
-        var visitorDetailsArrayList = ArrayList<EmployeeDetails>()
-        if (employeeData != null) {
-            var employeeDetails = EmployeeDetails()
-            for (visitorDetailsData in employeeData) {
-                employeeDetails.employeeId = visitorDetailsData[0].toLong()
-                employeeDetails.employeeName = visitorDetailsData[1]
-                employeeDetails.employeeEmailId = visitorDetailsData[2]
-                employeeDetails.companyName = visitorDetailsData[3]
-                employeeDetails.phoneNumber = visitorDetailsData[4]
-                employeeDetails.isEmployeeActive = visitorDetailsData[5].toBoolean()
+    private fun formEmployeeDatatoDB(employeeData: ArrayList<EmployeeDetails>?): ArrayList<EmployeeDetails>? {
+        var visitorDetailsArrayList: ArrayList<EmployeeDetails>? = null
+        if (employeeData != null && employeeData.size > 0) {
+            val employeeDetails = EmployeeDetails()
+            for (employeeDetailsData in employeeData) {
+                if (employeeDetailsData != null) {
+//                    println(employeeDetailsData[0] + " | " + employeeDetailsData[1] + " | " + employeeDetailsData[2] + " | " + employeeDetailsData[3])
 
-                visitorDetailsArrayList.add(employeeDetails)
+//                    if (employeeDetailsData[0] != null && employeeDetailsData[0].isEmpty()) {
+//                        employeeDetails.employeeId = employeeDetailsData[0].toLong()
+//                    }
+//                    if (employeeDetailsData[1] != null && employeeDetailsData[1].isEmpty()) {
+//                        employeeDetails.employeeName = employeeDetailsData[1]
+//                    }
+//                    if (employeeDetailsData[2] != null && employeeDetailsData[2].isEmpty()) {
+//                        employeeDetails.employeeEmailId = employeeDetailsData[2]
+//                    }
+//                    if (employeeDetailsData[3] != null && employeeDetailsData[3].isEmpty()) {
+//                        employeeDetails.companyName = employeeDetailsData[3]
+//                    }
+//                    if (employeeDetailsData[4] != null && employeeDetailsData[4].isEmpty()) {
+//                        employeeDetails.phoneNumber = employeeDetailsData[4]
+//                    }
+//                    if (employeeDetailsData[5] != null && employeeDetailsData[5].isEmpty()) {
+//                        employeeDetails.isEmployeeActive =
+//                            employeeDetailsData[5].toLowerCase() == "true"
+//                    }
+                    visitorDetailsArrayList!!.add(employeeDetails)
+                }
             }
         }
         return visitorDetailsArrayList

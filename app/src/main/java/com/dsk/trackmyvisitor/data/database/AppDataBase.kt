@@ -7,25 +7,29 @@ import androidx.room.RoomDatabase
 import com.dsk.trackmyvisitor.data.DAO.DAO
 import com.dsk.trackmyvisitor.data.entity.VisitorDetails
 
-@Database(entities = [VisitorDetails::class], version = 1,exportSchema = false)
-abstract class AppDatabase : RoomDatabase() {
+@Database(entities = [VisitorDetails::class], version = 1, exportSchema = false)
+abstract class AppDataBase : RoomDatabase() {
 
-    abstract fun visitorDetailsDao(): DAO
+    abstract fun visitorDetailsDAO(): DAO
 
     companion object {
-        var Instance: AppDatabase? = null
 
-        fun getAppDataBase(context: Context): AppDatabase? {
-            if (Instance == null){
-                synchronized(AppDatabase::class){
-                    Instance = Room.databaseBuilder(context.applicationContext, AppDatabase::class.java, "visitor-details.db").build()
+        @Volatile
+        private var INSTANCE: AppDataBase? = null
+
+        fun getDatabase(context: Context): AppDataBase? {
+            if (INSTANCE == null) {
+                synchronized(AppDataBase::class.java) {
+                    if (INSTANCE == null) {
+                        INSTANCE = Room.databaseBuilder(
+                            context.applicationContext,
+                            AppDataBase::class.java, "visitor-details.db"
+                        )
+                            .build()
+                    }
                 }
             }
-            return Instance
-        }
-
-        fun destroyDataBase(){
-            Instance = null
+            return INSTANCE
         }
     }
 }

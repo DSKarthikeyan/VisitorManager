@@ -11,13 +11,7 @@ interface DAO {
     fun insertVisitor(visitorDetails: VisitorDetails): Long
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertVisitor(visitorDetails: ArrayList<EmployeeDetails>)
-
-    @Update
-    fun updateVisitor(visitorDetails: VisitorDetails)
-
-    @Delete
-    fun deleteVisitor(visitorDetails: VisitorDetails)
+    fun insertVisitorList(visitorDetails: List<EmployeeDetails>)
 
     @Query("SELECT * FROM Visitor_Details WHERE visitor_id == :id")
     fun getVisitorById(id: Long): List<VisitorDetails>
