@@ -1,4 +1,4 @@
-package com.dsk.trackmyvisitor.view
+package com.dsk.trackmyvisitor.ui.view
 
 import android.Manifest
 import android.app.Activity
@@ -19,15 +19,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.dsk.trackmyvisitor.data.DAO.DAO
-import com.dsk.trackmyvisitor.data.database.AppDataBase
-import com.dsk.trackmyvisitor.data.entity.EmployeeDetails
-import com.dsk.trackmyvisitor.data.entity.VisitorDetails
-import com.dsk.trackmyvisitor.model.utility.CSVWriterReader
+import com.dsk.trackmyvisitor.data.local.DAO.DAO
+import com.dsk.trackmyvisitor.data.local.database.AppDataBase
+import com.dsk.trackmyvisitor.model.EmployeeDetails
+import com.dsk.trackmyvisitor.model.VisitorDetails
+import com.dsk.trackmyvisitor.util.CSVWriterReader
 import com.dsk.visitormanager.R
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 
 class ActivityAppSettings : AppCompatActivity() {
@@ -206,7 +203,8 @@ class ActivityAppSettings : AppCompatActivity() {
     private fun formEmployeeDatatoDB(employeeData: ArrayList<EmployeeDetails>?): ArrayList<EmployeeDetails>? {
         var visitorDetailsArrayList: ArrayList<EmployeeDetails>? = null
         if (employeeData != null && employeeData.size > 0) {
-            val employeeDetails = EmployeeDetails()
+            val employeeDetails =
+                EmployeeDetails()
             for (employeeDetailsData in employeeData) {
                 if (employeeDetailsData != null) {
 //                    println(employeeDetailsData[0] + " | " + employeeDetailsData[1] + " | " + employeeDetailsData[2] + " | " + employeeDetailsData[3])

@@ -26,8 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.dsk.trackmyvisitor.view.ActivityPushVisitorDetails" />
-        <activity android:name="com.dsk.trackmyvisitor.view.ActivityAppSettings"
+        <activity android:name="com.dsk.trackmyvisitor.ui.view.ActivityPushVisitorDetails" />
+        <activity android:name="com.dsk.trackmyvisitor.ui.view.ActivityAppSettings"
             android:theme="@style/AppTheme.NoActionBar"/>
         <provider
             android:name="androidx.core.content.FileProvider"

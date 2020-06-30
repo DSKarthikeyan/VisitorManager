@@ -1,18 +1,11 @@
-package com.dsk.trackmyvisitor.model.utility
+package com.dsk.trackmyvisitor.util
 
 import android.content.Context
 import android.net.Uri
-import android.util.Log
-import com.dsk.trackmyvisitor.data.entity.EmployeeDetails
-import com.dsk.trackmyvisitor.data.entity.VisitorDetails
+import com.dsk.trackmyvisitor.model.EmployeeDetails
+import com.dsk.trackmyvisitor.model.VisitorDetails
 import com.opencsv.CSVReader
-import com.opencsv.CSVReaderBuilder
-import com.opencsv.CSVWriter
-import com.opencsv.bean.ColumnPositionMappingStrategy
-import com.opencsv.bean.StatefulBeanToCsv
-import com.opencsv.bean.StatefulBeanToCsvBuilder
 import java.io.*
-import java.util.*
 import kotlin.collections.ArrayList
 
 class CSVWriterReader {
@@ -66,7 +59,8 @@ class CSVWriterReader {
             csvReader = CSVReader(fileReader)
 
             var record: Array<String>
-            val employeeDetails = EmployeeDetails()
+            val employeeDetails =
+                EmployeeDetails()
             csvReader.readNext() // skip Header
 
             record = csvReader.readNext()

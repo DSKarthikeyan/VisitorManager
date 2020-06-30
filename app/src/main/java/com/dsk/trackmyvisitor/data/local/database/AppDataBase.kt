@@ -1,19 +1,16 @@
-package com.dsk.trackmyvisitor.data.database
+package com.dsk.trackmyvisitor.data.local.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.dsk.trackmyvisitor.data.DAO.DAO
-import com.dsk.trackmyvisitor.data.entity.VisitorDetails
+import com.dsk.trackmyvisitor.data.local.DAO.DAO
+import com.dsk.trackmyvisitor.model.VisitorDetails
 
 @Database(entities = [VisitorDetails::class], version = 1, exportSchema = false)
 abstract class AppDataBase : RoomDatabase() {
-
     abstract fun visitorDetailsDAO(): DAO
-
     companion object {
-
         @Volatile
         private var INSTANCE: AppDataBase? = null
 

@@ -1,4 +1,4 @@
-package com.dsk.trackmyvisitor.data.entity
+package com.dsk.trackmyvisitor.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

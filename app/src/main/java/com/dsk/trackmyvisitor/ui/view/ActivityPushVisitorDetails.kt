@@ -1,4 +1,4 @@
-package com.dsk.trackmyvisitor.view
+package com.dsk.trackmyvisitor.ui.view
 
 import android.Manifest
 import android.animation.Animator
@@ -26,12 +26,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import com.dsk.trackmyvisitor.data.DAO.DAO
-import com.dsk.trackmyvisitor.data.database.AppDataBase
-import com.dsk.trackmyvisitor.data.entity.VisitorDetails
-import com.dsk.trackmyvisitor.model.utility.SingleTouchView
-import com.dsk.trackmyvisitor.model.utility.SingletonVisitorDetails
-import com.dsk.trackmyvisitor.model.utility.UtilityService
+import com.dsk.trackmyvisitor.data.local.DAO.DAO
+import com.dsk.trackmyvisitor.data.local.database.AppDataBase
+import com.dsk.trackmyvisitor.model.VisitorDetails
+import com.dsk.trackmyvisitor.util.SingleTouchView
+import com.dsk.trackmyvisitor.data.prefs.SingletonVisitorDetails
+import com.dsk.trackmyvisitor.util.UtilityService
 import com.dsk.visitormanager.GetVisitorDetails
 import com.dsk.visitormanager.R
 import kotlinx.coroutines.Dispatchers

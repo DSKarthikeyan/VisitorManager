@@ -9,11 +9,10 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.dsk.trackmyvisitor.data.entity.VisitorDetails
-import com.dsk.trackmyvisitor.model.utility.SingletonVisitorDetails
-import com.dsk.trackmyvisitor.view.ActivityAppSettings
-import com.dsk.trackmyvisitor.view.ActivityPushVisitorDetails
-import kotlinx.android.synthetic.main.activity_visitor_details.*
+import com.dsk.trackmyvisitor.model.VisitorDetails
+import com.dsk.trackmyvisitor.data.prefs.SingletonVisitorDetails
+import com.dsk.trackmyvisitor.ui.view.ActivityAppSettings
+import com.dsk.trackmyvisitor.ui.view.ActivityPushVisitorDetails
 
 
 class GetVisitorDetails : AppCompatActivity() {
@@ -148,18 +147,19 @@ class GetVisitorDetails : AppCompatActivity() {
                                                         isValidForm = true
                                                     }
 
-                                                    val visitorDetails = VisitorDetails(
-                                                        0,
-                                                        visitorName,
-                                                        employeeName,
-                                                        phoneNumber,
-                                                        visitorEmailId,
-                                                        companyName,
-                                                        visitPurpose,
-                                                        deviceDetails,
-                                                        null,
-                                                        null
-                                                    )
+                                                    val visitorDetails =
+                                                        VisitorDetails(
+                                                            0,
+                                                            visitorName,
+                                                            employeeName,
+                                                            phoneNumber,
+                                                            visitorEmailId,
+                                                            companyName,
+                                                            visitPurpose,
+                                                            deviceDetails,
+                                                            null,
+                                                            null
+                                                        )
                                                     SingletonVisitorDetails.visitorDetailsSingletonData =
                                                         visitorDetails
                                                 }

@@ -2,7 +2,7 @@
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.dsk.trackmyvisitor.view.ActivityAppSettings"
+    tools:context="com.dsk.trackmyvisitor.ui.view.ActivityAppSettings"
     android:orientation="vertical"
     android:padding="10dp"
     android:gravity="center"

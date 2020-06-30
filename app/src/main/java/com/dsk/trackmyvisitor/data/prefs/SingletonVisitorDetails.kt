@@ -1,13 +1,14 @@
-package com.dsk.trackmyvisitor.model.utility
+package com.dsk.trackmyvisitor.data.prefs
 
-import com.dsk.trackmyvisitor.data.entity.VisitorDetails
+import com.dsk.trackmyvisitor.model.VisitorDetails
 
 class SingletonVisitorDetails private constructor() {
 
     companion object {
         @Volatile private var INSTANCE: SingletonVisitorDetails? = null
         fun getInstance(): SingletonVisitorDetails {
-            return INSTANCE?: synchronized(this){
+            return INSTANCE
+                ?: synchronized(this){
                 SingletonVisitorDetails().also {
                     INSTANCE = it
                 }

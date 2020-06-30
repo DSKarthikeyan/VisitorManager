@@ -1,8 +1,8 @@
-package com.dsk.trackmyvisitor.data.DAO
+package com.dsk.trackmyvisitor.data.local.DAO
 
 import androidx.room.*
-import com.dsk.trackmyvisitor.data.entity.EmployeeDetails
-import com.dsk.trackmyvisitor.data.entity.VisitorDetails
+import com.dsk.trackmyvisitor.model.EmployeeDetails
+import com.dsk.trackmyvisitor.model.VisitorDetails
 
 @Dao
 interface DAO {

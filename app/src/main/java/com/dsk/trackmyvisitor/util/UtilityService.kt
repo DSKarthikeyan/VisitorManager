@@ -1,4 +1,4 @@
-package com.dsk.trackmyvisitor.model.utility
+package com.dsk.trackmyvisitor.util
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -90,7 +90,6 @@ class UtilityService {
     }
 
     fun createBitmap(v: View, isWantBG: Boolean): Bitmap? {
-
         //v.setVisibility(View.INVISIBLE);
         v.isDrawingCacheEnabled = true
         v.buildDrawingCache(true)

@@ -1,4 +1,4 @@
-package com.dsk.trackmyvisitor.model.utility
+package com.dsk.trackmyvisitor.util
 
 import android.content.Context
 import android.graphics.Canvas
